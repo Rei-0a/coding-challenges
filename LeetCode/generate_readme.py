@@ -34,7 +34,7 @@ def generate_table():
                 filepath = os.path.join(category_path, filename)
                 url, difficulty = get_problem_info(filepath)
                 if url:
-                    row = f"| [{num}. {title_formatted}]({url}) | {category} | {difficulty or 'Unknown'} |"
+                    row = f"| {num} | [{title_formatted}]({url}) | {category} | {difficulty or 'Unknown'} |"
                     rows.append(row)
     return rows
 
