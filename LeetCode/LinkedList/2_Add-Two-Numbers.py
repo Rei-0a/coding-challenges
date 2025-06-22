@@ -1,3 +1,6 @@
+# Problem: https://leetcode.com/problems/add-two-numbers/description/
+# Difficulty: Medium
+
 '''
 22/June/2025
 

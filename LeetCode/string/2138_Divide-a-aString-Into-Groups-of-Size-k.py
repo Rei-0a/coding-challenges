@@ -1,3 +1,6 @@
+# Problem: https://leetcode.com/problems/divide-a-string-into-groups-of-size-k/
+# Difficulty: Easy
+
 '''
 Jun/22/2025
 

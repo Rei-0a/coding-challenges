@@ -1,7 +1,7 @@
 import os
 import re
 
-ROOT_DIR = "Leetcode"
+ROOT_DIR = "./"
 README_PATH = "README.md"
 
 def get_problem_info(file_path):

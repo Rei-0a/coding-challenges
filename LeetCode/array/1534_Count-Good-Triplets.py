@@ -1,3 +1,6 @@
+# Problem: https://leetcode.com/problems/count-good-triplets/description/
+# Difficulty: Easy
+
 '''
 Jun/21/2025
 
