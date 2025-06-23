@@ -44,7 +44,7 @@ def write_readme(table_rows):
         f.write("This repository contains my solutions to LeetCode problems in Python.\n\n")
         f.write("## 📝 Problem List\n\n")
         f.write("| # | Title | Category | Difficulty |\n")
-        f.write("|---|-------|----------|------------|\n")
+        f.write("|:---:|-------|----------|------------|\n")
         for row in table_rows:
             f.write(row + "\n")
 
