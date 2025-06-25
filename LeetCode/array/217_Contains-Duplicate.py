@@ -1,9 +1,6 @@
 # Problem: https://leetcode.com/problems/contains-duplicate/description/
 # Difficulty: Easy
-'''
-23/Jun/2025
-'''
-
+# Date: 23/06/2025
 
 class Solution(object):
     def containsDuplicate(self, nums):

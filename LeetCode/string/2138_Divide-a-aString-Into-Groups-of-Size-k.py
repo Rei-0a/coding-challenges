@@ -1,8 +1,8 @@
 # Problem: https://leetcode.com/problems/divide-a-string-into-groups-of-size-k/
 # Difficulty: Easy
+# Date: 22/06/2025
 
 '''
-Jun/22/2025
 
 A string s can be partitioned into groups of size k using the following procedure:
 
