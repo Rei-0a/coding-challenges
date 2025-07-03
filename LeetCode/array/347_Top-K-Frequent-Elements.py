@@ -1,10 +1,7 @@
 # Problem: https://leetcode.com/problems/top-k-frequent-elements/description/
 # Difficulty: Medium
-# Data: 23/06/2025
+# Date: 2025-06-23
 
-'''
-Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
-'''
 class Solution(object):
     def topKFrequent(self, nums, k):
         """

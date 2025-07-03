@@ -1,6 +1,6 @@
 # Problem: https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 # Difficulty: Medium
-# Date: 25/06/2025
+# Date: 2025-06-25
 
 class Solution(object):
     def search(self, nums, target):
