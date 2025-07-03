@@ -4,7 +4,7 @@ from datetime import datetime
 
 ROOT_DIR = "./"
 README_PATH = "README.md"
-GITHUB_BASE_URL = "https://github.com/Rei-0a/coding-challenges/tree/main/LeetCode"  # ← ここを自分のURLに変更！
+GITHUB_BASE_URL = "https://github.com/Rei-0a/coding-challenges/tree/main/LeetCode"  # ← 自分のGitHubリポジトリURLに置き換えてください
 
 def get_problem_info(file_path):
     """問題番号・タイトル・難易度・URL・日付をソースコードから抽出"""
@@ -12,7 +12,7 @@ def get_problem_info(file_path):
         lines = f.readlines()
     problem_url = ""
     difficulty = ""
-    solved_date_raw = ""
+    solved_date = ""
     for line in lines[:10]:
         if "https://leetcode.com/problems/" in line:
             match = re.search(r"(https://leetcode.com/problems/[\w\-]+)", line)
@@ -21,10 +21,10 @@ def get_problem_info(file_path):
         if "Difficulty" in line:
             difficulty = line.split(":")[-1].strip()
         if "Date" in line:
-            date_match = re.search(r"Date\s*:\s*([\d]{2}/[\d]{2}/[\d]{4})", line)
+            date_match = re.search(r"Date\s*:\s*([\d\-]+)", line)
             if date_match:
-                solved_date_raw = date_match.group(1)
-    return problem_url, difficulty, solved_date_raw
+                solved_date = date_match.group(1)
+    return problem_url, difficulty, solved_date
 
 def generate_table():
     rows_with_date = []
@@ -39,20 +39,18 @@ def generate_table():
                 title = " ".join(title_parts)
                 title_formatted = title.replace("-", " ").title()
                 filepath = os.path.join(category_path, filename)
-                url, difficulty, solved_date_raw = get_problem_info(filepath)
-                try:
-                    sort_key = datetime.strptime(solved_date_raw, "%d/%m/%Y")
-                    solved_date_display = sort_key.strftime("%Y-%m-%d")
-                except:
-                    sort_key = datetime.min
-                    solved_date_display = "Unknown"
+                url, difficulty, solved_date = get_problem_info(filepath)
                 if url:
+                    # GitHubのコードリンクを作成
                     code_link = f"{GITHUB_BASE_URL}/{category}/{filename}"
-                    row = (
-                        f"| {num} | [{title_formatted}]({url}) | {category} | {difficulty or 'Unknown'} | "
-                        f"{solved_date_display} | [🔗]({code_link}) |"
-                    )
+                    row = f"| {num} | [{title_formatted}]({url}) | {category} | {difficulty or 'Unknown'} | {solved_date or 'Unknown'} | [🔗]({code_link}) |"
+                    # 並び替え用にdatetimeへ変換 (失敗時は最小値)
+                    try:
+                        sort_key = datetime.strptime(solved_date, "%Y-%m-%d")
+                    except:
+                        sort_key = datetime.min
                     rows_with_date.append((sort_key, row))
+    # 日付でソート
     rows_with_date.sort()
     return [row for _, row in rows_with_date]
 
@@ -62,11 +60,7 @@ def write_readme(table_rows):
         f.write("This repository contains my solutions to LeetCode problems in Python.\n\n")
         f.write("## 📝 Problem List (Sorted by Solved Date)\n\n")
         f.write("| # | Title | Category | Difficulty | Date | My Code |\n")
-        f.write("|:--:|-------|----------|------------|:----:|:-----:|\n")
+        f.write("|:---:|-------|----------|------------|:----:|:-----:|\n")  # ← ここが完全な1行
         for row in table_rows:
             f.write(row + "\n")
 
-if __name__ == "__main__":
-    table = generate_table()
-    write_readme(table)
-    print("✅ README.md updated with problem list and code links!")
