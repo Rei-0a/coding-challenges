@@ -1,0 +1,20 @@
+# Problem: https://leetcode.com/problems/roman-to-integer/description/
+# Difficulty: Easy
+# Date: 2025-07-03
+
+class Solution(object):
+    def romanToInt(self, s):
+        Value = { 'I' : 1 , 'V': 5, 'X' : 10, 'L':50, 'C':100, 'D':500, 'M':1000}
+        answer = 0
+        rev_flag = False
+        for index in range(len(s)):
+            if rev_flag:
+                answer += Value[s[index]] - Value[s[index-1]]
+                rev_flag = False
+        
+            elif index+1 < len(s) and Value[s[index]] < Value[s[index+1]]: # 1個あとの文字の方が大きいときにフラグを立てる
+                rev_flag = True
+            else:
+                answer += Value[s[index]]
+    
+        return answer

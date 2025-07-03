@@ -14,3 +14,6 @@ This repository contains my solutions to LeetCode problems in Python.
 | 347 | [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements) | array | Medium | 2025-06-23 |
 | 33 | [Search In Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array) | binarySearch | Medium | 2025-06-25 |
 | 74 | [Search A 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix) | binarySearch | Medium | 2025-06-25 |
+| 14 | [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix) | string | Easy | 2025-07-03 |
+| 21 | [Merge Two Sorted List](https://leetcode.com/problems/merge-two-sorted-lists) | linkedList | Easy | 2025-07-03 |
+| 83 | [Remove Duplicates From Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list) | linkedList | Easy | 2025-07-03 |
